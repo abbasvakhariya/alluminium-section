@@ -10,8 +10,8 @@ export default function AuthForm({ onAuthSuccess }) {
     e.preventDefault();
     setMsg("Please wait...");
     const endpoint = mode === "login"
-      ? "https://alluminium-section.onrender.com/login"
-      : "https://alluminium-section.onrender.com/register";
+      ? "https://rajwindow.onrender.com/api/login"
+      : "https://rajwindow.onrender.com/api/register";
     try {
       const res = await fetch(endpoint, {
         method: "POST",

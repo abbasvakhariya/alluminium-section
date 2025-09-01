@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_BASE = "http://localhost:5000/api/auth"; // Update if your backend runs elsewhere
+const API_BASE = "https://rajwindow.onrender.com/api"; // Updated to live backend URL
 
 export default function LoginRegister({ onAuth }) {
   const [mode, setMode] = useState("login"); // "login" or "register"
@@ -16,13 +16,13 @@ export default function LoginRegister({ onAuth }) {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE}/${mode === "login" ? "login" : "register"}`, {
+      const res = await fetch(`${API_BASE}/${mode === "login" ? "verify-otp" : "request-otp"}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(
           mode === "login"
-            ? { email, password }
-            : { name, email, password }
+            ? { email, otp: password }
+            : { email }
         ),
       });
       const data = await res.json();
